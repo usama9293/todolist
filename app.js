@@ -10,13 +10,14 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(Express.static("public"))
 import mongoose from "mongoose";
 import _ from "lodash";
+require("dotenv").config();
 //import https from "https";
 /************* */
 //database connection 
 //main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect("mongodb+srv://admin_usama:Test123@cluster0.gec1kk5.mongodb.net/todolistDB");
+    mongoose.connect(process.env.MONGO_DB_URL);
     // mongoose.connect('mongodb://localhost:27017/todolistDB');
 }
 main().catch(err => console.log(err));
